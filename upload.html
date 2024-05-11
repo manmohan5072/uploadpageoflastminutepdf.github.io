@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="Pages/Components/footer.css">
+    <link rel="stylesheet" href="Pages/Components/nav.css">
+    <style>
+        nav{
+            position: relative;
+            z-index: 111;
+        }
+        body {
+            background-color: rgb(22, 22, 22);
+        }
+
+        /* particles css  */
+        #particles-js {
+            position: fixed;
+            top: 0px;
+             margin-top: 190px; 
+             z-index: 0; 
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+
+        #main_img {
+            width: 55%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #main_img img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        #card_container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 90%;
+            margin: auto;
+            margin-bottom: 20px;
+            justify-content: space-around;
+        }
+
+        .card {
+            margin: 12px 10px;
+            padding: 0px 5px;
+            width: 270px;
+            height: 200px;
+            background: #07182E;
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            flex-direction: column;
+            place-content: center;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .card h2 {
+            text-align: center;
+            z-index: 1;
+            color: white;
+            font-size: 2em;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            width: 350px;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 183, 255)), to(rgb(255, 48, 255)));
+            background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+            /* height: 130%; */
+            height: 130px;
+            -webkit-animation: rotBGimg 3s linear infinite;
+            animation: rotBGimg 3s linear infinite;
+            -webkit-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+        }
+
+        @-webkit-keyframes rotBGimg {
+            from {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotBGimg {
+            from {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            background: #07182E;
+            ;
+            inset: 5px;
+            border-radius: 15px;
+        }
+
+        /* card button */
+        .cssbuttons-io-button {
+            z-index: 01;
+            margin-top: 15px;
+
+            background: #A370F0;
+            color: white;
+            font-family: inherit;
+            /* padding: 0.35em; */
+            padding-left: 0.5em;
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 0.9em;
+            border: none;
+            letter-spacing: 0.05em;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-shadow: inset 0 0 1.6em -0.6em #714da6;
+            box-shadow: inset 0 0 1.6em -0.6em #714da6;
+            overflow: hidden;
+            position: relative;
+            height: 2.8em;
+            padding-right: 2.8em;
+        }
+
+        .cssbuttons-io-button:hover {
+            cursor: pointer;
+        }
+
+        .cssbuttons-io-button .icon {
+            background: white;
+            margin-left: 1em;
+            position: absolute;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            height: 2.2em;
+            width: 2.2em;
+            border-radius: 0.7em;
+            -webkit-box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+            box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+            right: 0.3em;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .cssbuttons-io-button:hover .icon {
+            width: calc(100% - 0.6em);
+        }
+
+        .cssbuttons-io-button .icon svg {
+            width: 1.1em;
+            -webkit-transition: -webkit-transform 0.3s;
+            transition: -webkit-transform 0.3s;
+            transition: transform 0.3s;
+            transition: transform 0.3s, -webkit-transform 0.3s;
+            color: #7b52b9;
+        }
+
+        .cssbuttons-io-button:hover .icon svg {
+            -webkit-transform: translateX(0.1em);
+            -ms-transform: translateX(0.1em);
+            transform: translateX(0.1em);
+        }
+
+        .cssbuttons-io-button:active .icon {
+            -webkit-transform: scale(0.95);
+            -ms-transform: scale(0.95);
+            transform: scale(0.95);
+        }
+
+        .card a {
+            text-decoration: none;
+        }
+    </style>
+
+    <title>Engineers Library</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9902996261585194"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <script src="Pages/Components/nav.js"></script>
+    <!-- navbar end -->
+
+    <div id="particles-js"></div>
+
+    <div id="main_img">
+        <img src="./content/images/upload image.png" alt="" srcset="">
+    </div>
+    <!-- container  -->
+    <div id="card_container">
+        <div class="card">
+            <h2>AIML</h2>
+            <a href="https://www.dropbox.com/scl/fo/e2yhastg7h8w3liemzmed/AGByoO2KYu9SlerdOl9EAAY?rlkey=issizxwga93hdluggmhbpu2no&st=1mri64hi&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>B.TECH AIML</h2>
+            <a href="https://www.dropbox.com/scl/fo/6pd05aaxmr2xoir4iuw7p/AOeviaKQ5KqxcSett1QnJ6U?rlkey=jden4l3z6wnucwlwxtkd3ntir&st=uhlk4i5n&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>ECE</h2>
+            <a href="https://www.dropbox.com/scl/fo/s6oe5jpk6d6rxjfyplmt6/AMgVFs-l1yeHOc5mcJQcb8M?rlkey=naqi8698q69m7f2lxmvo87a5n&st=oovq7o5n&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>ELECTRICAL POWER SYSTEM</h2>
+            <a href="https://www.dropbox.com/scl/fo/q6blh3nm07exs03329r4j/AE_w33Fq0Gc31uKv9UuCig4?rlkey=cg0rae13bmc0l5l6picqzwwex&st=nre3b9rh&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>CIVIL ENGINEERING</h2>
+            <a href="https://www.dropbox.com/scl/fo/4jto8xbyd3c8pzw7kmicd/ALvqxS6SVMoJpzEhWLTCw4o?rlkey=gzwa3s823o6akooba27iku6ez&st=bli7ryfa&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>IT</h2>
+            <a href="https://www.dropbox.com/scl/fo/o0wsx8gxcw91ptylmq9p7/ALULLGv6TIPiVGf2qnE76Rk?rlkey=h3ixxdp4i22tmx3rg20ah8vd9&st=nc5a4g09&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>CYBER SECURITY</h2>
+            <a href="https://www.dropbox.com/scl/fo/b7kqqlhv5cewkbnpjrr4p/APzCYtTVOXyoQBvehTiq1SA?rlkey=eh2w3ar74hjj8skwva1cblve7&st=ns506va9&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>STRUCTURAL ENGINEERING </h2>
+            <a href="https://www.dropbox.com/scl/fo/z16fb0kw3uwk9q07yznmq/AIHAgzQhJi7_JcoNEZUmJeQ?rlkey=rjrw6d1tha4ddbesxgd2mvyep&st=t5l33fnn&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>CSE</h2>
+            <a href="https://www.dropbox.com/scl/fo/todpnioesmio8bvr50hzc/AB8JKM4ZV_jVFqnT-9YcHxg?rlkey=5gsi1pplgx6pgvwzcqfu1bz2w&st=n6megkhm&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>MECHANICAL ENGINEERING</h2>
+            <a href="https://www.dropbox.com/scl/fo/bmv210b3w2oqk0gkqkktc/AHeF8a-WhF8xy1DY3Zo0Zs4?rlkey=8sg7q91rhde485fp1htpnraxr&st=3w5tohgf&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>DATA SCIENCE </h2>
+            <a href="https://www.dropbox.com/scl/fo/jm9qylu8gsk2n0xyhfayw/ABiUEdrbtfuyq5pfukYj0LM?rlkey=8qc6xab05eeiayo2llllsceq9&st=d71x05k6&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>THERMAL ENGINEERING</h2>
+            <a href="https://www.dropbox.com/scl/fo/zigk3jzuc649yd7mz7bah/AIWaePAqWeDuZt1LctxSCII?rlkey=lzd6on2qwmsce2p2j1aqanzm3&st=qr9oy8c8&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>EEE</h2>
+            <a href="https://www.dropbox.com/scl/fo/9m6e4qo6oxumvzowusdlm/ABdckq5Q5lclmiigXbZpBAw?rlkey=o0cs8ahp5j72ijcfptu2jc8vs&st=y0dh6z3v&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>MINING</h2>
+            <a href="https://www.dropbox.com/scl/fo/zbqfccbdr8y6zqm0g2obg/ALsZEDwNKWPkTVCudiUwf1g?rlkey=kwr93n8fxrm26lhzejk68tk45&st=h7me3qjp&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>IOT</h2>
+            <a href="https://www.dropbox.com/scl/fo/p3u00zwahaydsdco11s0t/ADQivUbJuF8ofjClQv6h1F8?rlkey=askbhqpkzpo8pnjztp80z7fza&st=s29c1mww&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="card">
+            <h2>M.TECH CSE</h2>
+            <a href="https://www.dropbox.com/scl/fo/f1jh7e4xo1rcnuff05uhr/AA7xIkdGXtxEZUC1A8yV1fk?rlkey=qvsj3u5z1hfgs9n30kbu2fcad&st=uiak9g3c&dl=0">
+                <button class="cssbuttons-io-button"> Get started
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <script src="Pages/Components/footer.js"></script>
+    <!-- particles -->
+    <script src="libraries/particles/particles.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 700,
+                    "density": {
+                        "enable": true,
+                        "value_area": 1000
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 190,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/65fa6340a0c6737bd122aa88/1hpd17da0';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+
+</html>
